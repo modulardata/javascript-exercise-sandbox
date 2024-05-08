@@ -1,17 +1,17 @@
-function first() {
-  const x = 100;
+// function first() {
+//   const x = 100;
 
-  function second() {
-    const y = 200;
-    console.log(x + y);
-  }
+//   function second() {
+//     const y = 200;
+//     console.log(x + y);
+//   }
 
-  // console.log(y);
+//   // console.log(y);
 
-  second();
-}
+//   second();
+// }
 
-first();
+// first();
 
 if (true) {
   const x = 100;
