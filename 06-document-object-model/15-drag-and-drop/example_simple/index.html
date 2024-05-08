@@ -9,10 +9,16 @@
 
 	<body>
 
+		<!-- Draggable Element -->
+		<!-- This div is set up to be draggable. It has event handlers for drag start and drag end events. -->
 		<div id="draggable" class="draggable" draggable="true" ondragstart="dragStartHandler(event)"
 			ondragend="dragEndHandler(event)">
 			Drag me
 		</div>
+
+		<!-- Droppable Area -->
+		<!-- This div serves as the target area for dropping the draggable element. -->
+		<!-- It has event handlers for drag over, drag enter, drag leave, and drop events to manage the drag-and-drop interaction. -->
 		<div id="target" class="target" ondragover="dragOverHandler(event)" ondragenter="dragEnterHandler(event)"
 			ondragleave="dragLeaveHandler(event)" ondrop="dropHandler(event)">
 			Target Area
