@@ -2,6 +2,7 @@ const text = document.querySelector('p');
 const itemList = document.querySelector('.item-list');
 const items = itemList.querySelectorAll('li');
 
+
 function run() {
   // className - Gets a string of all classes
   console.log(itemList.className);
