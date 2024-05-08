@@ -8,7 +8,7 @@ function registerUser(user = 'Bot') {
   return user + ' is registered';
 }
 
-console.log(registerUser());
+// console.log(registerUser());
 
 // Rest Params
 function sum(...numbers) {
@@ -21,7 +21,8 @@ function sum(...numbers) {
   return total;
 }
 
-console.log(sum(1, 2, 3, 4, 5, 6, 100));
+
+// console.log(sum(1, 2, 3, 4, 5, 6, 100));
 
 // Objects as params
 function loginUser(user) {
@@ -33,13 +34,13 @@ const user = {
   name: 'John',
 };
 
-console.log(loginUser(user));
-console.log(
-  loginUser({
-    id: 2,
-    name: 'Sara',
-  })
-);
+// console.log(loginUser(user));
+// console.log(
+//   loginUser({
+//     id: 2,
+//     name: 'Sara',
+//   })
+// );
 
 // Arrays as params
 function getRandom(arr) {

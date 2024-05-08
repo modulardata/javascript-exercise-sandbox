@@ -30,5 +30,36 @@
 // const styles = 'padding: 10px; background-color: white; color: green';
 // console.log('%cHello World', styles);
 
-let paragraph = document.createElement("p");
-paragraph.textContent = "Learning DOM methods is fun";
+// let paragraph = document.createElement("p");
+// paragraph.textContent = "Learning DOM methods is fun";
+
+// document.body.onload = addElement;
+
+// function addElement() {
+// create a new div element
+const newDiv = document.createElement("div");
+
+// and give it some content
+const newContent = document.createTextNode("Hi there and greetings!");
+
+// add the text node to the newly created div
+newDiv.innerHTML(newContent);
+
+// add the newly created element and its content into the DOM
+// const currentDiv = document.getElementById("div1");
+// document.body.insertBefore(newDiv, currentDiv);
+// }
+
+
+
+// const numbers = [12, 45, 33, 29, 39];
+
+// let count = 0;
+// function counter(arr) {
+//   for (let element in arr) {
+//     count++;
+//   }
+//   return count;
+// }
+
+// console.log(counter(numbers));

@@ -1,13 +1,13 @@
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-const doubledNumbers = numbers.map((number) => number * 2);
-console.log(doubledNumbers);
+// const doubledNumbers = numbers.map((number) => number * 2);
+// // console.log(doubledNumbers);
 
-// Same with forEach
-const doubledNumbers2 = [];
-numbers.forEach((number) => {
-  doubledNumbers2.push(number * 2);
-});
+// // Same with forEach
+// const doubledNumbers2 = [];
+// numbers.forEach((number) => {
+//   doubledNumbers2.push(number * 2);
+// });
 
 const companies = [
   { name: 'Company One', category: 'Finance', start: 1981, end: 2004 },
@@ -33,6 +33,8 @@ const companyInfo = companies.map((company) => {
   };
 });
 
+// console.log(companyInfo);
+
 // Create an array of objects with the name and the length of each company in years
 const companyYears = companies.map((company) => {
   return {
@@ -41,7 +43,7 @@ const companyYears = companies.map((company) => {
   };
 });
 
-console.log(companyYears);
+// console.log(companyYears);
 
 // Chain map methods
 const squareAndDouble = numbers
@@ -60,6 +62,8 @@ const squareAndDouble2 = numbers
   });
 
 // Chaining different methods
+// 👌👍
+
 const evenDouble = numbers
   .filter((number) => number % 2 === 0)
   .map((number) => number * 2);

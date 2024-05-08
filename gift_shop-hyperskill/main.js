@@ -1,120 +1,298 @@
-const input = require('sync-input');
-const data = require('./data/gift_shop_data.json');
-
-const giftShop = {
-  welcomeMessage: function () {
-    for (let i = 0; i < data['welcome_message'].length; i++) {
-      console.log(data['welcome_message'][i]);
-    }
-    console.log('\r');
-  },
-  showGiftsList: function () {
-    if ('gifts_list' in data) {
-      for (let i = 0; i < data['gifts_list'].length; i++) {
-        console.log(
-          `${data['gifts_list'][i].id}- ${data['gifts_list'][i].name}, Cost: ${data['gifts_list'][i].price} tickets`
-        );
-      }
-      console.log('\r');
-    } else {
-      console.log("I don't have any gifts list to show you.");
-    }
-  },
-  chose: function () {
-    console.log('What do you want to do?');
-    let question = input(
-      '1-Buy a gift 2-Add tickets 3-Check tickets 4-Show gifts 5-Exit the shop\n'
+const input = require("sync-input");
+const APP = {
+  init() {
+    APP.handleMessages.displayTextToUser(
+      APP.handleMessages.selectMessage().greeting,
     );
-    if (isNaN(question) || parseInt(question) < 1 || parseInt(question) > 5) {
-      console.log('Please enter a valid number!\n');
-      // console.log(typeof question);
-    }
-    // console.log(typeof question);
-    switch (parseInt(question)) {
-      case 1:
-        giftShop.buy();
-        break;
-      case 2:
-        giftShop.addTickets();
-        break;
-      case 3:
-        giftShop.checkTickets(data['tickets']);
-        break;
-      case 4:
-        giftShop.showGifts();
-        break;
-      case 5:
-        giftShop.out();
-        break;
-      // default:
-      //     console.log('Unknown command!');
-    } // switch
+    APP.handleGifts.showGifts().body();
+    APP.showMenu();
   },
-  buy: function () {
-    let chooseGift = input('Enter the number of the gift you want to get:\n');
-
-    if (isNaN(chooseGift)) {
-      console.log('Please enter a valid number!\n');
-    } else if (
-      Number(chooseGift) < 1 ||
-      Number(chooseGift) > (data['gifts_list'] ? data['gifts_list'].length : 0)
-    ) {
-      console.log('There is no gift with that number!\n');
-    } else if (data['gifts_list'] === 0) {
-      console.log('Wow! There are no gifts to buy.!\n');
-
-    } else {
-      for (let i = 0; i < data['gifts_list'].length; i++) {
-        // console.log(
-        // 	parseInt(chooseGift) === parseInt(data['gifts_list'][i].id)
-        // );
-        if (parseInt(chooseGift) === parseInt(data['gifts_list'][i].id)) {
-          if (data['tickets'] < data['gifts_list'][chooseGift - 1].price) {
-            console.log(`You don't have enough tickets to buy this gift.`);
-            console.log(`Total tickets: ${data['tickets'] + '\n'}`);
-          } else {
-            let total = data['tickets'] - data['gifts_list'][i].price;
-            console.log(`Here you go, one ${data['gifts_list'][i].name}!`);
-            console.log(`Total tickets: ${total + '\n'}`);
-            data['gifts_list'].splice(i, 1);
-
-          }
-        } else if (i === data['gifts_list'].length - 1) {
-          console.log('There is no gift with that number!');
-          // giftShop.showGiftsList();
-
-        }
+  showMenu() {
+    let terminate = false;
+    do {
+      switch (
+      APP.handleUserInput.setUserInput(
+        APP.handleMessages.selectPrompt().menuSelectionPrompt,
+      )
+      ) {
+        case 1:
+          APP.handleGifts.selectGift();
+          break;
+        case 2:
+          APP.handleTickets.buyTickets();
+          break;
+        case 3:
+          APP.handleTickets.showTicketBalance();
+          break;
+        case 4:
+          APP.handleGifts.showGifts().allParts();
+          break;
+        case 5:
+          terminate = true;
+          break;
+        default:
+          APP.handleMessages.displayTextToUser(
+            APP.handleMessages.selectWarning().notANumber,
+          );
+          break;
       }
-    }
+    } while (!terminate);
+    APP.handleMessages.displayTextToUser(
+      APP.handleMessages.selectMessage().farewell,
+    );
   },
-  addTickets: function () {
-    let amount = input('Enter the ticket amount:\n');
-    if (isNaN(amount) || Number(amount) < 0 || Number(amount) > 1000) {
-      console.log(`Please enter a valid number between 0 and 1000.\n`);
-    } else {
-      data['tickets'] += parseInt(amount);
-      console.log(`Total tickets: ${data['tickets']}\n`);
-    }
-  },
-  checkTickets: function (amount) {
-    console.log(`Total tickets: ${amount + '\n'}Have a nice day!`);
-  },
-  showGifts: function () {
-    console.log("Here's the list of gifts:" + '\n');
-    giftShop.showGiftsList();
-  },
-  out: function () {
-    console.log('Have a nice day!');
-    process.exit();
-  },
+  handleUserInput: (function () {
+    let userInput = 0;
+
+    return {
+      setUserInput: function (msg) {
+        userInput = Number(input(msg));
+        if (APP.handleUserInput.validateUserInput()) {
+          return userInput;
+        }
+        return (userInput = false);
+      },
+      getUserInput: function () {
+        return userInput;
+      },
+      validateUserInput: function () {
+        if (isNaN(userInput)) {
+          return false;
+        } else if (!(userInput >= 0 && userInput <= 1000)) {
+          return false;
+        }
+        return true;
+      },
+    };
+  })(),
+  handleMessages: (function () {
+    return {
+      selectPrompt() {
+        return {
+          menuSelectionPrompt: `What do you want to do?\n1-Buy a gift 2-Add tickets 3-Check tickets 4-Show gifts 5-Exit the shop\n`,
+          giftSelectionPrompt: `Enter the number of the gift you want to get:`,
+          ticketTransactionPrompt: `Enter the ticket amount:`,
+        };
+      },
+      selectMessage(gift = { id: 0, name: "", price: 0 }, amount) {
+        return {
+          greeting: `WELCOME TO THE CARNIVAL GIFT SHOP!\nHello friend! Thank you for visiting the carnival!\nHere's the list of gifts:\n`,
+          farewell: `Have a nice day!`,
+          giftTransaction: `Here you go, one ${gift.name || "empty"}!`,
+          giftListHeader: `Here's the list of gifts:\n`,
+          giftListItemRow: `${gift.id || "empty"}- ${gift.name || "empty"}, Cost: ${gift.price || "empty"} tickets`,
+          ticketTransaction: `Here you go, ${amount} tickets!`,
+          showTicketBalance: `Total tickets: ${amount}`,
+          newLine: ``,
+        };
+      },
+      selectWarning() {
+        return {
+          notANumber: `Please enter a valid number!\n`,
+          outOfRange: `Please enter a valid number between 0 and 1000.\n`,
+          giftNotFound: `There is no gift with that number!\n`,
+          noRemainingGifts: `Wow! There are no gifts to buy.\n`,
+          insufficientTickets: `You don't have enough tickets to buy this gift.`,
+        };
+      },
+      displayTextToUser(displayText) {
+        return console.log(displayText);
+      },
+    };
+  })(),
+  handleGifts: (function () {
+    let giftList = [
+      {
+        name: "Teddy Bear",
+        price: 10,
+        id: 1,
+      },
+      {
+        name: "Big Red Ball",
+        price: 5,
+        id: 2,
+      },
+      {
+        name: "Huge Bear",
+        price: 50,
+        id: 3,
+      },
+      {
+        name: "Candy",
+        price: 8,
+        id: 4,
+      },
+      {
+        name: "Stuffed Tiger",
+        price: 15,
+        id: 5,
+      },
+      {
+        name: "Stuffed Dragon",
+        price: 30,
+        id: 6,
+      },
+      {
+        name: "Skateboard",
+        price: 100,
+        id: 7,
+      },
+      {
+        name: "Toy Car",
+        price: 25,
+        id: 8,
+      },
+      {
+        name: "Basketball",
+        price: 20,
+        id: 9,
+      },
+      {
+        name: "Scary Mask",
+        price: 75,
+        id: 10,
+      },
+    ];
+    return {
+      itemNumber() {
+        return APP.handleUserInput.setUserInput(
+          APP.handleMessages.selectPrompt().giftSelectionPrompt,
+        );
+      },
+      selectGift: function () {
+        // If giftList array has items
+        if (giftList.length) {
+          // get user input
+          let selectedItem = APP.handleGifts.itemNumber();
+          // Grap the user selected item
+          let giftItem = giftList.find((gift) => gift.id === selectedItem);
+          // if gift is available in list, process it.
+          if (giftItem) {
+            APP.handleGifts.buyGift(giftItem);
+            // Handle if gift is not available in list
+          } else if (selectedItem !== false) {
+            APP.handleMessages.displayTextToUser(
+              APP.handleMessages.selectWarning().giftNotFound,
+            );
+            // Invalid input
+          } else {
+            APP.handleMessages.displayTextToUser(
+              APP.handleMessages.selectWarning().notANumber,
+            );
+          }
+          // Gift list is empty
+        } else {
+          APP.handleMessages.displayTextToUser(
+            APP.handleMessages.selectWarning().noRemainingGifts,
+          );
+        }
+      },
+      // Process the selected gift item for purchase.
+      buyGift: function (giftItem) {
+        // Does the user afford the gift item?
+        if (APP.handleTickets.getTicketBalance() >= giftItem.price) {
+          APP.handleMessages.displayTextToUser(
+            APP.handleMessages.selectMessage(giftItem).giftTransaction,
+          );
+          APP.handleGifts.removeGift(giftItem);
+          APP.handleTickets.withdrawTickets(giftItem.price);
+          // No tickets, no gift!
+        } else {
+          APP.handleMessages.displayTextToUser(
+            APP.handleMessages.selectWarning().insufficientTickets,
+          );
+        }
+        // Show ticket balance.
+        APP.handleTickets.showTicketBalance();
+      },
+      // Remove the gift
+      removeGift: function (giftItem) {
+        giftList = giftList.filter((item) => item.id !== giftItem.id);
+      },
+      // Display available gifts to user
+      showGifts: function () {
+        return {
+          allParts: function () {
+            if (giftList.length) {
+              APP.handleGifts.showGifts().header();
+              APP.handleGifts.showGifts().body();
+              APP.handleGifts.showGifts().footer();
+            } else {
+              APP.handleMessages.displayTextToUser(
+                APP.handleMessages.selectMessage().giftListHeader,
+              );
+              APP.handleMessages.displayTextToUser(
+                APP.handleMessages.selectWarning().noRemainingGifts,
+              );
+            }
+          },
+          header: function () {
+            APP.handleMessages.displayTextToUser(
+              APP.handleMessages.selectMessage().giftListHeader,
+            );
+          },
+          body: function () {
+            giftList.forEach((gift) => {
+              APP.handleMessages.displayTextToUser(
+                APP.handleMessages.selectMessage(gift).giftListItemRow,
+              );
+            });
+          },
+          footer: function () {
+            APP.handleMessages.displayTextToUser(
+              APP.handleMessages.selectMessage().newLine,
+            );
+          },
+        };
+      },
+    };
+  })(),
+  handleTickets: (function () {
+    // Total tickets
+    let sum = 0;
+    // amount of tickets used for proccessing.
+    let amount = 0;
+    return {
+      buyTickets: function () {
+        // Get amount from user
+        amount = APP.handleUserInput.setUserInput(
+          APP.handleMessages.selectPrompt().ticketTransactionPrompt,
+        );
+        // Check if amount is valid
+        if (amount || amount === 0) {
+          APP.handleUserInput.validateUserInput(amount);
+          APP.handleTickets.depositTickets(amount);
+          APP.handleMessages.displayTextToUser(
+            APP.handleMessages.selectMessage(undefined, amount)
+              .ticketTransaction,
+          );
+          APP.handleMessages.displayTextToUser(
+            APP.handleMessages.selectMessage(undefined, sum).showTicketBalance,
+          );
+        } else {
+          APP.handleMessages.displayTextToUser(
+            APP.handleMessages.selectWarning().outOfRange,
+          );
+        }
+      },
+      depositTickets: function (amount) {
+        sum += amount;
+        return sum;
+      },
+      withdrawTickets: function (amount) {
+        sum -= amount;
+        return sum;
+      },
+      getTicketBalance: function () {
+        return sum;
+      },
+      showTicketBalance: function () {
+        APP.handleMessages.displayTextToUser(
+          APP.handleMessages.selectMessage(undefined, sum).showTicketBalance,
+        );
+      },
+    };
+  })(),
 };
 
-const __main__ = () => {
-  giftShop.welcomeMessage();
-  giftShop.showGiftsList();
-  do {
-    giftShop.chose();
-  } while (true);
-};
-
-__main__();
+APP.init();

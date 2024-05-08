@@ -1,6 +1,9 @@
 {
-  "editor.fontFamily": "Dank Mono",
+  "editor.fontFamily": "Dank Mono Italic",
   "editor.fontWeight": "400",
   "editor.fontVariations": true,
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "cSpell.words": [
+    "Displayer"
+  ]
 }

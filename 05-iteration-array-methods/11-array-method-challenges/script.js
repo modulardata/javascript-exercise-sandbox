@@ -37,25 +37,25 @@ const people = [
   },
 ];
 
-const youngPeople = people
-  .filter((person) => person.age <= 25)
-  .map((person) => ({
-    name: person.firstName + ' ' + person.lastName,
-    email: person.email,
-  }));
+// const youngPeople = people
+//   .filter((person) => person.age <= 25)
+//   .map((person) => ({
+//     name: person.firstName + ' ' + person.lastName,
+//     email: person.email,
+//   }));
 
-console.log(youngPeople);
+// console.log(youngPeople);
 
-// Challenge 2
-const numbers = [2, -30, 50, 20, -12, -9, 7];
+// // Challenge 2
+// const numbers = [2, -30, 50, 20, -12, -9, 7];
 
-const positiveSum = numbers
-  .filter((number) => number > 0)
-  .reduce((acc, cur) => acc + cur, 0);
+// const positiveSum = numbers
+//   .filter((number) => number > 0)
+//   .reduce((acc, cur) => acc + cur, 0);
 
-console.log(positiveSum);
+// console.log(positiveSum);
 
-// Challenge 3
+// // Challenge 3
 const words = ['coder', 'programmer', 'developer'];
 
 const cWords = words.map((word) => {
