@@ -32,6 +32,8 @@
 // })();
 
 
+
+/*NOTE Module pattern */
 const displayElement = document.querySelector(".score");
 
 const DisplayController = (function () {

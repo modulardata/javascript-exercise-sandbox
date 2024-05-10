@@ -12,4 +12,8 @@ There is a folder called "javascript-sandbox-start", which contains the starter 
 
 ## Updates
 
-- installation of https://github.com/hyperskill/sync-input for exercises using -> pnpm
+- installation of <https://github.com/hyperskill/sync-input> for exercises using -> pnpm
+
+### Content Ownership Disclaimer
+
+The content provided on this respiratory is for informational purposes only. I do not claim ownership of any of the materials, images, or media used unless explicitly stated. All rights belong to their respective owners. If you believe any content infringes upon your copyright, please contact me, and I will promptly address the issue.

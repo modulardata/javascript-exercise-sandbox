@@ -9,7 +9,11 @@ const person = {
 };
 
 let newName = name;
+console.log(newName);
 newName = 'Jonathan';
+console.log(newName);
+
+
 
 let newPerson = person;
 newPerson.name = 'Bradley';

@@ -1,12 +1,17 @@
-let x;
+// use quokka.js
+
+// let x;
 
 // Coerced to a string
 x = 5 + '5';
+console.log(x, typeof x);
 
 x = 5 + Number('5');
+console.log(x, typeof x);
 
 // Coerced to a number
 x = 5 * '5';
+console.log(x, typeof x);
 
 // null is coerced to 0 as it is a `falsy` value
 x = 5 + null;
@@ -25,4 +30,4 @@ x = 5 + false;
 // Undefined is coerced to 0 (falsy)
 x = 5 + undefined;
 
-console.log(x, typeof x);
+// console.log(x, typeof x);
