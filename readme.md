@@ -1,7 +1,7 @@
 # Modern JavaScript from the Beginning by Brad Traversy
 
 ## ==Forked and changed for exercises for me to download => play and change==
-
+Data in this respiratory is bloated     open code editor in specific topic {folder}
 ### Exercise projest files
 
 This is the code repository for [Modern JavaScript from the Beginning [Second Edition]]. It contains all the supporting project files necessary to work through the book from start to finish.
