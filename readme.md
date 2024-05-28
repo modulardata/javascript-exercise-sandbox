@@ -13,6 +13,7 @@ There is a folder called "javascript-sandbox-start", which contains the starter 
 ## Updates
 
 - installation of <https://github.com/hyperskill/sync-input> for exercises using -> pnpm
+- index.html in root folder using links for browser editor and dev tools
 
 ### Content Ownership Disclaimer
 
