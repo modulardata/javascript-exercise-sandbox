@@ -1,5 +1,6 @@
 //! using better  comments.tags in comments
 //  ?Lesson https://hyperskill.org/learn/step/27939
+//  ?https://www.js-tutorials.com/nodejs-tutorial/simple-websocket-example-with-nodejs/
 /*
 ?WebSocket Server locally for tests are hard to manage.
 You will need to choose a base framework, a websocket library and then cope with the particularities of such combination.
@@ -25,6 +26,20 @@ const socket = new WebSocket('wss://address/endpoint');
 // 1 - "OPEN" is for data exchange
 // 2 - "CLOSING" means the connection is currently being closed
 // 3 - "CLOSED" means the connection is already closed.
+
+// Create WebSocket connection.
+const socket = new WebSocket("ws://localhost:8080");
+
+// Connection opened
+socket.addEventListener("open", (event) => {
+  socket.send("Hello Server!");
+});
+
+// Listen for messages
+socket.addEventListener("message", (event) => {
+  console.log("Message from server ", event.data);
+});
+
 
 
 socket.onopen = function (event) {
