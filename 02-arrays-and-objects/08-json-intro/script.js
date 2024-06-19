@@ -3,14 +3,19 @@ const post = {
   title: 'Post One',
   body: 'This is the body',
 };
+console.log(typeof post)
 
 // Convert to JSON string
 const str = JSON.stringify(post);
+// console.log(typeof str)
+
+
 
 console.log(str.id);
 
 // Parse JSON
 const obj = JSON.parse(str);
+
 
 console.log(obj.id);
 

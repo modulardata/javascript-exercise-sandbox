@@ -1,14 +1,14 @@
 // Default Params
 function registerUser(user = 'Bot') {
   // Old way - before using `=`
-  // if (!user) {
-  //   user = 'Bot';
-  // }
+  if (!user) {
+    user = 'Bot';
+  }
 
   return user + ' is registered';
 }
 
-// console.log(registerUser());
+console.log(registerUser());
 
 // Rest Params
 function sum(...numbers) {
@@ -34,13 +34,13 @@ const user = {
   name: 'John',
 };
 
-// console.log(loginUser(user));
-// console.log(
-//   loginUser({
-//     id: 2,
-//     name: 'Sara',
-//   })
-// );
+console.log(loginUser(user));
+console.log(
+  loginUser({
+    id: 2,
+    name: 'Sara',
+  })
+);
 
 // Arrays as params
 function getRandom(arr) {
@@ -51,4 +51,4 @@ function getRandom(arr) {
   console.log(item);
 }
 
-getRandom([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+// getRandom([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);

@@ -5,6 +5,7 @@
 ?WebSocket Server locally for tests are hard to manage.
 You will need to choose a base framework, a websocket library and then cope with the particularities of such combination.
 
+
 ?For example, you can use
 
 * node.js and socket.io : https://github.com/vtortola/WebSocketListener/wiki/Mono-support
@@ -12,12 +13,12 @@ You will need to choose a base framework, a websocket library and then cope with
 * Java and its WebSocket: https://blog.idrsolutions.com/2013/12/websockets-an-introduction/
 * PHP/Apache and Ratchet: http://socketo.me/
 * Of, if you have already a TCP service, you can use WebSockify to provide the same service through WebSockets: https://github.com/kanaka/websockify
+
+
 */
 
 
-
 const socket = new WebSocket('wss://address/endpoint');
-
 
 // readyState property
 // In order to get the state of the WebSocket connection, we can use the additional readyState property.It has the following values:

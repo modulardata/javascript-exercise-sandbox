@@ -21,11 +21,10 @@ x = num.toLocaleString('en-US');
 
 // valueOf - Get value
 x = num.valueOf();
+console.log(x);
 
 // The Number object itself has some properties and methods
 
 // Largest and smallest possible number
 x = Number.MAX_VALUE;
 x = Number.MIN_VALUE;
-
-console.log(x);

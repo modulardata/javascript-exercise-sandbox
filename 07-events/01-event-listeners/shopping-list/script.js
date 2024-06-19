@@ -14,22 +14,22 @@ function onClear() {
 }
 
 // JavaScript Event Listener
-clearBtn.onclick = function () {
-  alert('Clear Items');
-};
-
 // clearBtn.onclick = function () {
-//   console.log('Clear Items');
+//   alert('Clear Items');
 // };
 
-// // addEventListener()
-// clearBtn.addEventListener('click', () => alert('Clear Items'));
-
-// // Use named function
-// clearBtn.addEventListener('click', onClear);
-
-// // removeEventListener()
-// setTimeout(() => clearBtn.removeEventListener('click', onClear), 5000);
-
-// // Fire off event from JS
-// setTimeout(() => clearBtn.click(), 5000);
+clearBtn.onclick = function () {
+  console.log('Clear Items');
+};
+//
+// addEventListener()
+clearBtn.addEventListener('click', () => alert('Clear Items'));
+//
+// Use named function
+clearBtn.addEventListener('click', onClear);
+//
+// removeEventListener()
+setTimeout(() => clearBtn.removeEventListener('click', onClear), 5000);
+//
+// Fire off event from JS
+setTimeout(() => clearBtn.click(), 5000);

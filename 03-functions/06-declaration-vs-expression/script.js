@@ -1,16 +1,17 @@
-// let obj = { key: 'value' };
-// let jsonString = JSON.stringify(obj);
-// let parsedObj = JSON.parse(jsonString);
-// console.log(parsedObj); // Outputs: { key: 'value' }
-
+let obj = { key: 'value' };
+let jsonString = JSON.stringify(obj);
+let parsedObj = JSON.parse(jsonString);
+console.log(typeof parsedObj); // Outputs: { key: 'value' }
+console.log(typeof jsonString)
+//
 
 // Function Declaration
-// function addDollarSign(value) {
-//   return '$' + value;
-// }
+function addDollarSign(value) {
+  return '$' + value;
+  }
 
 // // When using declarations, you can invoke the function before the declaration. With expressions, you can not
-// console.log(addDollarSign(100));
+console.log(addDollarSign(100));
 
 // Function Expression
 const addPlusSign = function (value) {

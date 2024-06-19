@@ -21,6 +21,7 @@ const person = {
 
 x = person.address.coords.lat;
 
+
 const obj1 = { a: 1, b: 2 };
 const obj2 = { c: 3, d: 4 };
 
@@ -36,6 +37,8 @@ const todos = [
   { id: 3, name: 'Take out trash' },
 ];
 
+
+
 x = todos[0].name;
 
 // Get array of object keys
@@ -48,9 +51,9 @@ x = Object.keys(todo).length;
 x = Object.values(todo);
 
 // Get array of object key/value pairs
-x = Object.entries(todo);
+// x = Object.entries(todo);
 
 // Check if object has a property
-x = todo.hasOwnProperty('age');
+// x = todo.hasOwnProperty('age');
 
 console.log(x);
