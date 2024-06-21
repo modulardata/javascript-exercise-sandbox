@@ -1,4 +1,6 @@
 {
+  "better-comments.highlightPlainText": true,
+  "better-comments.multilineComments": true,
   "editor.fontFamily": "MonoLisa",
   "editor.fontWeight": "600",
   "editor.fontVariations": true,
@@ -6,5 +8,174 @@
   "cSpell.words": [
     "Displayer",
     "quokka"
+  ],
+  "todo-tree.tree.showBadges": true,
+  "todo-tree.highlights.enabled": true,
+  "todo-tree.general.tags": [
+    "FIXME",
+    "TODO",
+    "BUG",
+    "PART",
+    "HACK",
+    "NOTE",
+    "MET",
+    "TEST",
+    "[x]",
+    "[ ]",
+    "!",
+    "?"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "background": "#3d5a7f",
+      "foreground": "#b8860b",
+      "iconColour": "#3d5a7f",
+      "icon": "checklist",
+      "type": "tag-and-comment",
+      "gutterIcon": true
+    },
+    "FIXME": {
+      "background": "#fb5609",
+      "foreground": "#f5cc5c",
+      "iconColour": "#fb5609",
+      "icon": "tools",
+      "gutterIcon": true
+    },
+    "BUG": {
+      "background": "#ef253c",
+      "foreground": "#fda312",
+      "iconColour": "#ef253c",
+      "icon": "bug",
+      "gutterIcon": true
+    },
+    "PART": {
+      "background": "#073a4b",
+      "foreground": "#f6501e",
+      "iconColour": "#073a4b",
+      "icon": "server",
+      "gutterIcon": true
+    },
+    "HACK": {
+      "background": "#293242",
+      "foreground": "#9bc63f",
+      "iconColour": "#9bc63f",
+      "icon": "alert",
+      "gutterIcon": true
+    },
+    "NOTE": {
+      "background": "#e6a714",
+      "foreground": "#363636",
+      "iconColour": "#ee9649",
+      "icon": "comment",
+      "gutterIcon": true
+    },
+    "TEST": {
+      "background": "#1768ab",
+      "foreground": "#363636",
+      "iconColour": "#1768ab",
+      "icon": "beaker",
+      "gutterIcon": true
+    },
+    "MET": {
+      "background": "#028192",
+      "foreground": "#000",
+      "iconColour": "#028192",
+      "icon": "package",
+      "gutterIcon": true
+    },
+    "[x]": {
+      "background": "#9bc63f",
+      "foreground": "#363636",
+      "iconColour": "#ee9649",
+      "icon": "check",
+      "gutterIcon": true
+    },
+    "[ ]": {
+      "background": "#9d2a2c",
+      "foreground": "#84a98c",
+      "iconColour": "#ee9649",
+      "icon": "calendar",
+      "gutterIcon": true
+    },
+    "?": {
+      "foreground": "#3498DB",
+      "iconColour": "#3498DB",
+      "icon": "telescope",
+      "gutterIcon": true
+    },
+    "!": {
+      "foreground": "#f71835",
+      "iconColour": "#f71835",
+      "icon": "pin",
+      "gutterIcon": true
+    }
+  },
+  // ? End of TODO TREE
+  //  ? Better-comments
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "note",
+      "color": "#ffe66b",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "PART",
+      "color": "#f6501e",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "met",
+      "color": "grey",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
   ]
 }
