@@ -19,19 +19,19 @@ function replaceSecondItem() {
 function replaceAllItems() {
   const lis = document.querySelectorAll('li');
 
-  // lis.forEach((item, index) => {
-  //   // item.outerHTML = '<li>Replace All</li>';
-  //   if (index === 1) {
-  //     item.innerHTML = 'Second Item';
-  //   } else {
-  //     item.innerHTML = 'Replace All';
-  //   }
-  // });
+  lis.forEach((item, index) => {
+    // item.outerHTML = '<li>Replace All</li>';
+    if (index === 1) {
+      item.innerHTML = 'Second Item';
+    } else {
+      item.innerHTML = 'Replace All';
+    }
+  });
 
-  lis.forEach(
-    (item, index) =>
-      (item.outerHTML = index === 1 ? '<li>Second Item</li>' : '<li>Item</li>')
-  );
+// lis.forEach(
+//   (item, index) =>
+//     (item.outerHTML = index === 1 ? '<li>Second Item</li>' : '<li>Item</li>')
+// );
 }
 
 // replaceChild() Method

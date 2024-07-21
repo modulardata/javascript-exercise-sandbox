@@ -34,7 +34,12 @@ function insertBeforeItem() {
   ul.insertBefore(li, thirdItem);
 }
 
-insertElement();
+// insertElement();
+// insertText();
+//
+// insertHTML();
+
+insertBeforeItem();
 
 /*
 <!-- beforebegin -->

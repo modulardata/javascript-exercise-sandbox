@@ -31,7 +31,7 @@ const secondItem = document.querySelector('.child:nth-child(2)');
 output = secondItem;
 output = secondItem.nextElementSibling;
 
-secondItem.nextElementSibling.style.color = 'green';
-secondItem.previousElementSibling.style.color = 'orange';
+// secondItem.nextElementSibling.style.color = 'green';
+// secondItem.previousElementSibling.style.color = 'orange';
 
 console.log(output);

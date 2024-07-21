@@ -64,6 +64,7 @@ function dragOver(e) {
 }
 
 
+
 /**
  * Handles the dragleave event on a drop target.
  * This function removes the visual cue that indicates the element is a valid drop target.
